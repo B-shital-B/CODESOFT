@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int x,y;
+	char op;
+	cout<<"Enter the two operands:";
+	cin>>x>>y;
+	cout<<"Enter the operation which you won perform :";
+	cout<<"\n 1.Addtion(+)"; 
+	cout<<"\n 2.substraction(-)";
+	cout<<"\n 3.multiplication(*) ";
+	cout<<"\n 4.division(/)"<<endl;
+	cin>>op;
+	
+	switch(op)
+	{
+		case '+':
+			cout<<"Addition="<<(x+y);
+			break;
+		case '-':
+			cout<<"Substraction="<<(x-y);
+			break;
+		case '*':
+			cout<<"Multiplication="<<(x*y);
+			break;
+		case '/':
+			cout<<"Division="<<(x/y);
+			break;
+			
+		case '%':
+			cout<<"modulus="<<(x%y);
+			break;
+		default:
+			cout<<"invalid input";
+			break;
+	}
+	 
+}
