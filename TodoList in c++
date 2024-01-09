@@ -1,0 +1,308 @@
+#include<iostream>
+#include<string>
+#include<fstream>
+using namespace std;
+
+struct todoList{
+	int id;
+	string task;
+};
+
+int ID;
+int id;
+void banner();
+void addtask();
+void viewtask();
+void deletetask();
+int main(){
+	system("cls");
+	while(true)
+	{
+		banner();
+		cout<<"\n\t1.Add task";
+		cout<<"\n\t2.view task";
+		cout<<"\n\t3.delete task";
+		
+		int choice;
+		cout<<"\n Enter your choice:";
+		cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				addtask();
+				break;
+				case 2:
+					viewtask();
+					break;
+					case 3:
+						deletetask();
+						break;
+						default:
+							break;
+		}
+	}
+	return 0;
+}
+void banner(){
+	cout<<"____________________________________________"<<endl;
+	cout<<"\t     my Todo"<<endl;
+	cout<<"_____________________________________________"<<endl;
+	
+}
+
+void addtask(){
+	system("cls");
+	banner();
+	todoList todo;
+	cout<<"Enter new task:"<<endl;
+	cin.get();
+	getline(cin,todo.task);
+	char save;
+	cout<<"save:  (y/n):";
+	cin>>save;
+	if(save=='y'){
+		ID++;
+		ofstream fout;
+		fout.open("todo.txt",ios::app);
+		fout<<"\n"<<ID;
+		fout<<"\n"<<todo.task;
+		fout.close();
+		
+		char more;
+		cout<<"enter more task (y/n):";
+		cin>>more;
+		
+		if(more=='y'){
+			addtask();
+		}
+		else{
+			system("cls");
+			cout<<"Added successfully!"<<endl;
+			return;
+		}
+	}
+	system("cls");
+}
+
+void viewtask(){
+	system("cls");
+	banner();
+	todoList todo;
+	ifstream fin;
+	fin.open("todo.txt");
+	cout<<"Task:"<<endl;
+	
+	while(!fin.eof())
+	{
+		fin>>todo.id;
+		fin.ignore();
+		getline(fin,todo.task);
+		
+		if(todo.task != ""){
+			cout<<"\t"<<todo.id<<":"<<todo.task<<endl;
+		}
+		else{
+			cout<<"\t empty!"<<endl;
+		}
+	}
+	fin.close();
+	char exit;
+	cout<<"Exit  (y/n)";
+	cin>>exit;
+	if(exit!='y'){
+		viewtask();
+	}
+	system("cls");
+}
+
+void deletetask(){
+	system("cls");
+
+	if(ID != 0){
+		char del;
+		cout<<"\n\tDelete (y/n):";
+		cin>>del;
+		if(del=='y'){
+			todoList todo;
+			
+			ifstream fin;
+			fin.open("todo.txt");
+			int index=1;
+			while(!fin.eof()){
+				fin.ignore();
+				getline(fin,todo.task);
+				if(todo.id==id){
+					
+
+					
+					ID--;
+				}
+			}
+			fin.close();
+			
+			remove("todo.txt");
+			rename("temp.txt","todo.txt");
+			system("cls");
+			cout<<"\n\t Deleted sucessfully!"<<endl;
+		}
+		else{
+			system("cls");
+			cout<<"not Deleted!"<<endl;
+		}
+		
+	}
+}
+#include<iostream>
+#include<string>
+#include<fstream>
+using namespace std;
+
+struct todoList{
+	int id;
+	string task;
+};
+
+int ID;
+int id;
+void banner();
+void addtask();
+void viewtask();
+void deletetask();
+int main(){
+	system("cls");
+	while(true)
+	{
+		banner();
+		cout<<"\n\t1.Add task";
+		cout<<"\n\t2.view task";
+		cout<<"\n\t3.delete task";
+		
+		int choice;
+		cout<<"\n Enter your choice:";
+		cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				addtask();
+				break;
+				case 2:
+					viewtask();
+					break;
+					case 3:
+						deletetask();
+						break;
+						default:
+							break;
+		}
+	}
+	return 0;
+}
+void banner(){
+	cout<<"____________________________________________"<<endl;
+	cout<<"\t     my Todo"<<endl;
+	cout<<"_____________________________________________"<<endl;
+	
+}
+
+void addtask(){
+	system("cls");
+	banner();
+	todoList todo;
+	cout<<"Enter new task:"<<endl;
+	cin.get();
+	getline(cin,todo.task);
+	char save;
+	cout<<"save:  (y/n):";
+	cin>>save;
+	if(save=='y'){
+		ID++;
+		ofstream fout;
+		fout.open("todo.txt",ios::app);
+		fout<<"\n"<<ID;
+		fout<<"\n"<<todo.task;
+		fout.close();
+		
+		char more;
+		cout<<"enter more task (y/n):";
+		cin>>more;
+		
+		if(more=='y'){
+			addtask();
+		}
+		else{
+			system("cls");
+			cout<<"Added successfully!"<<endl;
+			return;
+		}
+	}
+	system("cls");
+}
+
+void viewtask(){
+	system("cls");
+	banner();
+	todoList todo;
+	ifstream fin;
+	fin.open("todo.txt");
+	cout<<"Task:"<<endl;
+	
+	while(!fin.eof())
+	{
+		fin>>todo.id;
+		fin.ignore();
+		getline(fin,todo.task);
+		
+		if(todo.task != ""){
+			cout<<"\t"<<todo.id<<":"<<todo.task<<endl;
+		}
+		else{
+			cout<<"\t empty!"<<endl;
+		}
+	}
+	fin.close();
+	char exit;
+	cout<<"Exit  (y/n)";
+	cin>>exit;
+	if(exit!='y'){
+		viewtask();
+	}
+	system("cls");
+}
+
+void deletetask(){
+	system("cls");
+
+	if(ID != 0){
+		char del;
+		cout<<"\n\tDelete (y/n):";
+		cin>>del;
+		if(del=='y'){
+			todoList todo;
+			
+			ifstream fin;
+			fin.open("todo.txt");
+			int index=1;
+			while(!fin.eof()){
+				fin.ignore();
+				getline(fin,todo.task);
+				if(todo.id==id){
+					
+
+					
+					ID--;
+				}
+			}
+			fin.close();
+			
+			remove("todo.txt");
+			rename("temp.txt","todo.txt");
+			system("cls");
+			cout<<"\n\t Deleted sucessfully!"<<endl;
+		}
+		else{
+			system("cls");
+			cout<<"not Deleted!"<<endl;
+		}
+		
+	}
+}
